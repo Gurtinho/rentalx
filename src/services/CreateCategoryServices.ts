@@ -1,4 +1,4 @@
-import { CategoriesRepository } from "../../repositories/CategoriesRepository";
+import { CategoriesRepository } from "../repositories/CategoriesRepository";
 
 interface IRequest {
     name: string,
@@ -6,7 +6,7 @@ interface IRequest {
 }
 
 class CreateCategoryService {
-    constructor(private categoriesRepository: CategoriesRepository) {} // hackzinho
+    constructor(private categoriesRepository: CategoriesRepository) { } // hackzinho
     execute({ name, description }: IRequest) {
         const categoriesAlreadyExists = this.categoriesRepository.findByName(name);
         if (categoriesAlreadyExists) {
