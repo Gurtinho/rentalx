@@ -8,4 +8,4 @@ app.get('/', (request, response) => {
     return response.status(201).send();
 });
 
-app.listen(3333);
+app.listen(3333, () => console.log('running'));
