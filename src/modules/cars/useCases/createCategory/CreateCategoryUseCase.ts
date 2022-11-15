@@ -1,11 +1,11 @@
-import { CategoriesRepository } from '../repositories/CategoriesRepository';
+import { CategoriesRepository } from '../../repositories/CategoriesRepository';
 
 interface IRequest {
     name: string,
     description: string
 }
 
-class CreateCategoryService {
+class CreateCategoryUseCase {
     constructor(private categoriesRepository: CategoriesRepository) { } // hackzinho
     execute({ name, description }: IRequest) {
         const categoriesAlreadyExists = this.categoriesRepository.findByName(name);
@@ -15,4 +15,4 @@ class CreateCategoryService {
         this.categoriesRepository.create({ name, description });
     }
 }
-export { CreateCategoryService }
+export { CreateCategoryUseCase }
