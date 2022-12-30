@@ -2,6 +2,7 @@ import { Specifications } from '../models/Specifications';
 import { ICreateSpecificationDTO, ISpecificationRepository } from './ISpecificationRepository';
 
 class SpecificationRepository implements ISpecificationRepository {
+
     private specifications: Specifications[];
 
     constructor() {
@@ -22,5 +23,7 @@ class SpecificationRepository implements ISpecificationRepository {
         const specification = this.specifications.find(specification => specification.name == name);
         return specification;
     }
+
 }
+
 export { SpecificationRepository }

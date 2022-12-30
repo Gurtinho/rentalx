@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 class Specifications {
+
     id?: string;
     name: string;
     description: string;
@@ -11,5 +12,7 @@ class Specifications {
             this.id = uuid();
         }
     }
+    
 }
+
 export { Specifications }

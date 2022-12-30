@@ -2,7 +2,9 @@ import { Category } from '../models/Category';
 import { ICreateCategoryDTO } from './ICategoriesRepository';
 
 class CategoriesRepository {
+
     private categories: Category[];
+
     constructor() {
         this.categories = [];
     }
@@ -27,5 +29,7 @@ class CategoriesRepository {
         );
         return category;
     }
+
 }
+
 export { CategoriesRepository }

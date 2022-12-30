@@ -6,7 +6,9 @@ interface IRequest {
 }
 
 class CreateCategoryUseCase {
+
     constructor(private categoriesRepository: CategoriesRepository) { } // hackzinho
+
     execute({ name, description }: IRequest) {
         const categoriesAlreadyExists = this.categoriesRepository.findByName(name);
         if (categoriesAlreadyExists) {
@@ -14,5 +16,7 @@ class CreateCategoryUseCase {
         }
         this.categoriesRepository.create({ name, description });
     }
+
 }
+
 export { CreateCategoryUseCase }
