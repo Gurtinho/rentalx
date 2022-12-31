@@ -3,13 +3,19 @@ import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
 class CreateCategoryController {
     
-    // como se tivesse setado uma variavel
-    constructor(private createCategoryUseCase: CreateCategoryUseCase) { }
+    private createCategoryUseCase: CreateCategoryUseCase
+    constructor(createCategoryUseCase: CreateCategoryUseCase) { 
+        this.createCategoryUseCase = createCategoryUseCase;
+    }
     
     handle(request: Request, response: Response): Response {
         const { name, description } = request.body;
         this.createCategoryUseCase.execute({ name, description });
         return response.status(201).send();
+    }
+
+    list(request: Request, response: Response): Response {
+        return response.status(201).json();
     }
 
 }

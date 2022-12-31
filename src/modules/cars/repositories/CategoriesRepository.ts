@@ -6,7 +6,7 @@ class CategoriesRepository {
     private categories: Category[];
 
     constructor() {
-        this.categories = [];
+        this.categories = []; // inicializa o categories como um array vazio;
     }
 
     create({ name, description }: ICreateCategoryDTO): void {

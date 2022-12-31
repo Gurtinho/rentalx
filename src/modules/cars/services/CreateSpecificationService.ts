@@ -6,8 +6,11 @@ interface IRequest {
 }
 
 class CreateSpecificationService {
-
-    constructor(private specificationRepository: ISpecificationRepository) { }
+    
+    private specificationRepository: ISpecificationRepository
+    constructor(specificationRepository: ISpecificationRepository) {
+        this.specificationRepository = specificationRepository;
+    }
     
     execute({ name, description }: IRequest): void {
         const specificationAlreadyExists = this.specificationRepository.findByName(name);
