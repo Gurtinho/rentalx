@@ -3,7 +3,7 @@ import { ICategoriesRepository } from '../../repositories/ICategoriesRepository'
 
 class ListCategoryController {
 
-    constructor(private categoriesRepository: ICategoriesRepository) { }
+    constructor(private categoriesRepository: ICategoriesRepository) {}
 
     handle(request: Request, response: Response): Response {
         const all = this.categoriesRepository.list();
