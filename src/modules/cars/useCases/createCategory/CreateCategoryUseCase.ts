@@ -1,5 +1,4 @@
-import { Response } from 'express';
-import { CategoriesRepository } from '../../repositories/CategoriesRepository';
+import { CategoriesRepository } from '../../repositories/Implementations/CategoriesRepository';
 
 interface IRequest {
     name: string,

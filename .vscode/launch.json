@@ -1,12 +1,24 @@
 {
     "version": "0.2.0",
     "configurations": [
+
+        {
+            "name": "Attach to Docker Compose",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "localRoot": "${workspaceFolder}/",
+            "remoteRoot": "/app/"
+        },
         {
             "type": "node",
             "request": "attach",
             "name": "Launch Program",
-            "skipFiles": ["<node_internals>/**"],
-            "outFiles": ["${workspaceFolder}/**/*.js"]
+            "timeout": -1, // Não irá desligar o debug automaticamente
+            "restart": true, // Quando terminar ele irá reiniciar
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
         }
     ]
 }

@@ -5,8 +5,6 @@
         "jest": true
     },
     "extends": [
-        "prettier",
-        "plugin:prettier/recommended",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended"
     ],
@@ -19,14 +17,16 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "eslint-plugin-import-helpers",
-        "prettier"
+        "eslint-plugin-import-helpers"
     ],
     "rules": {
-        "prettier/prettier": "error",
-        "indent": [
+        "indent": [4, "tab"],
+        "no-tabs": 0,
+        "prettier/prettier": [
             "error",
-            "tab"
+            {
+                "endOfLine": "auto"
+            }
         ],
         "linebreak-style": [
             "error",

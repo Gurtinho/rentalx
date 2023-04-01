@@ -1,8 +1,9 @@
-import { Specifications } from '../models/Specifications';
-import { ICreateSpecificationDTO, ISpecificationRepository } from './ISpecificationRepository';
+import { Specifications } from '../../models/Specifications';
+import { ICreateSpecificationDTO, ISpecificationRepository } from '../ISpecificationRepository';
 
 class SpecificationRepository implements ISpecificationRepository {
 
+    // tabela banco de dados
     private specifications: Specifications[];
 
     constructor() {
