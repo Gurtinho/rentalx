@@ -15,6 +15,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "quotes": "single",
     "plugins": [
         "@typescript-eslint",
         "eslint-plugin-import-helpers"

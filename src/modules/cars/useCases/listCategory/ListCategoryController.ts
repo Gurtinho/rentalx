@@ -1,17 +1,13 @@
 import { Request, Response } from 'express';
-import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
+import { container } from 'tsyringe';
 import { ListCategoryUseCase } from './ListCategoryUseCase';
 
 class ListCategoryController {
 
-    private listCategoryUseCase: ListCategoryUseCase
-    constructor(listCategoryUseCase: ListCategoryUseCase) {
-        this.listCategoryUseCase = listCategoryUseCase;
-    }
-
-    handle(request: Request, response: Response): Response {
+    async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const all = this.listCategoryUseCase.execute();
+            const listCategoryUseCase = container.resolve(ListCategoryUseCase);
+            const all = await listCategoryUseCase.execute();
             return response.status(201).json(all);
         } catch (err) {
             return response.status(404).json(err);
@@ -20,4 +16,4 @@ class ListCategoryController {
 
 }
 
-export { ListCategoryController }
+export { ListCategoryController };

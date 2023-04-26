@@ -1,31 +1,21 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';
+import { AppError } from '../../../../errors/AppError';
 
 class CreateCategoryController {
-    
-    private createCategoryUseCase: CreateCategoryUseCase
-    constructor(createCategoryUseCase: CreateCategoryUseCase) { 
-        this.createCategoryUseCase = createCategoryUseCase;
-    }
-    
-    handle(request: Request, response: Response): Response {
+
+    async handle(request: Request, response: Response): Promise<Response> {
         const { name, description } = request.body;
         try {
-            this.createCategoryUseCase.execute({ name, description });
+            const createCategoryUseCase = container.resolve(CreateCategoryUseCase);
+            await createCategoryUseCase.execute({ name, description });
             return response.status(201).send();
         } catch (err) {
-            return response.status(500).send(err);
-        }
-    }
-
-    list(request: Request, response: Response): Response {
-        try {
-            return response.status(201).json();
-        } catch (err) {
-            return response.status(404).send(err);
+            throw new AppError('Cannot create category ' + err);
         }
     }
 
 }
 
-export { CreateCategoryController }
+export { CreateCategoryController };

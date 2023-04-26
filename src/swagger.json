@@ -5,7 +5,8 @@
         "description": "this is a api rental",
         "version": "1.0.0",
         "contact": {
-            "email": "gustavolitter@gmail.com"
+            "email": "gustavolitter@gmail.com",
+            "name": "gustavo litter"
         }
     },
     "paths": {
@@ -72,6 +73,99 @@
                     },
                     "500": {
                         "description": "categories not exists"
+                    }
+                }
+            }
+        },
+        "/categories/import": {
+            "post": {
+                "tags": ["category"],
+                "summary": "upload a new category",
+                "description": "upload a new category",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "category successfully uploaded"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/specifications": {
+            "post": {
+                "tags": ["specifications"],
+                "summary":"create specification",
+                "description": "create a new specification",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "created"
+                    },
+                    "500": {
+                        "description": "specification already exists"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["specifications"],
+                "summary": "list all specifications",
+                "description": "list all specifications",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "specifications not exists"
                     }
                 }
             }

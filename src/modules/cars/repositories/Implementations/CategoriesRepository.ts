@@ -1,44 +1,35 @@
-import { Category } from '../../models/Category';
-import { ICreateCategoryDTO } from '../ICategoriesRepository';
+import { Repository } from 'typeorm';
+import { dataConnection } from '../../../../database/data-source';
+import { Category } from '../../../../database/entities/Category';
+import { ICategoriesRepository, ICreateCategoryDTO } from '../ICategoriesRepository';
 
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
 
-    private categories: Category[];
+    private repository: Repository<Category>;
 
-    private static INSTANCE: CategoriesRepository;
-
-    private constructor() {
-        this.categories = []; // inicializa o categories como um array vazio;
+    constructor() {
+        this.repository = dataConnection.getRepository(Category);
     }
 
-    public static getInstance(): CategoriesRepository {
-        if (!CategoriesRepository.INSTANCE) {
-            CategoriesRepository.INSTANCE = new CategoriesRepository();
-        }
-        return CategoriesRepository.INSTANCE;
-    } 
-
-    create({ name, description }: ICreateCategoryDTO): void {
-        const category = new Category;
-        Object.assign(category, {
+    async create({ name, description }: ICreateCategoryDTO): Promise<Category> {
+        const category = this.repository.create({
             name,
-            description,
-            created_at: new Date()
+            description
         });
-        this.categories.push(category);
+        await this.repository.save(category);
+        return category;
     }
 
-    list(): Category[] {
-        return this.categories;
+    async list(): Promise<Category[]> {
+        const categories = await this.repository.find();
+        return categories;
     }
 
-    findByName(name: string): Category {
-        const category = this.categories.find(
-            category => category.name == name
-        );
+    async findByName(name: string): Promise<Category> {
+        const category = await this.repository.findOneBy({ name });
         return category;
     }
 
 }
 
-export { CategoriesRepository }
+export { CategoriesRepository };

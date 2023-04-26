@@ -9,6 +9,7 @@ export const dataConnection = new DataSource({
     database: process.env.DB_NAME,
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
-    port: 5432,
+    port: Number(process.env.DB_PORT),
     migrations: ['src/database/migrations/*.ts'],
+    entities: ['src/database/entities/*.ts'],
 });
