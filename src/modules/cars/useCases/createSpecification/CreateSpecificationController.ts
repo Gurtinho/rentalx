@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { CreateSpecificationUseCase } from './CreateSpecificationUseCase';
-import { AppError } from '../../../../errors/AppError';
+import { CreateSpecificationUseCase } from '@modules/cars/useCases/createSpecification/CreateSpecificationUseCase';
 
 class CreateSpecificationController {
 
@@ -12,7 +11,7 @@ class CreateSpecificationController {
             await createSpecificationUseCase.execute({ name, description });
             return response.status(201).send();
         } catch (err) {
-            throw new AppError('Cannot create specification ' + err);
+            throw new Error('Cannot create specification ');
         }
     }
 

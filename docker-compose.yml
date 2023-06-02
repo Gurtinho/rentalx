@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3'
 services:
 
   database:
@@ -6,16 +6,16 @@ services:
     container_name: rentalx-database
     build: .docker/postgres
     restart: always
-    tty: true
     ports:
       - '5433:5432'
     environment:
-      - POSTGRES_HOST=rentalx-database
+      - POSTGRES_HOST=localhost
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=sa1234
       - POSTGRES_DB=rentalx
     volumes:
       - pgdata:/data/postgres
+
   app:
     build: .
     restart: always

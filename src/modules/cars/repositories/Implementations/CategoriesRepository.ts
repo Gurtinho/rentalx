@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
-import { dataConnection } from '../../../../database/data-source';
-import { Category } from '../../../../database/entities/Category';
-import { ICategoriesRepository, ICreateCategoryDTO } from '../ICategoriesRepository';
+import { dataConnection } from '@src/database/data-source';
+import { Category } from '@modules/cars/entities/Category';
+import { ICategoriesRepository, ICreateCategoryDTO } from '@modules/cars/repositories/ICategoriesRepository';
 
 class CategoriesRepository implements ICategoriesRepository {
 
@@ -29,7 +29,6 @@ class CategoriesRepository implements ICategoriesRepository {
         const category = await this.repository.findOneBy({ name });
         return category;
     }
-
 }
 
 export { CategoriesRepository };
