@@ -4,6 +4,7 @@ import 'express-async-errors';
 import { dataConnection } from '@src/database/data-source';
 import { router } from 'routes';
 import swaggerFile from './swagger.json';
+import './shared/container';
 
 const app = express();
 

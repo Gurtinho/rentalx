@@ -2,10 +2,11 @@ version: '3'
 services:
 
   database:
-    image: postgres
+    image: postgres:alpine
     container_name: rentalx-database
     build: .docker/postgres
     restart: always
+    env_file: ./.env
     ports:
       - '5433:5432'
     environment:
@@ -20,6 +21,7 @@ services:
     build: .
     restart: always
     container_name: rentalx-app
+    env_file: ./.env
     ports:
       - 3333:3333
       - 9230:9229
