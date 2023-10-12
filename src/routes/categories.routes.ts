@@ -4,7 +4,7 @@ import { CreateCategoryController } from '@modules/cars/useCases/createCategory/
 import { ImportCategoryController } from '@modules/cars/useCases/importCategory/ImportCategoryController';
 import { ListCategoryController } from '@modules/cars/useCases/listCategory/ListCategoryController';
 
-const categoriesRoutes = Router();
+export const categoriesRoutes = Router();
 
 const upload = multer({
     dest: './tmp'
@@ -24,5 +24,3 @@ categoriesRoutes.post('/import',
     upload.single('file'),
     importCategoryController.handle
 );
-
-export { categoriesRoutes };

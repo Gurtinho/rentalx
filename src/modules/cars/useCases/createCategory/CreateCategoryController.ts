@@ -11,7 +11,7 @@ class CreateCategoryController {
             await createCategoryUseCase.execute({ name, description });
             return response.status(201).send();
         } catch (err) {
-            throw new Error('Cannot create category ');
+            throw new Error('Cannot create category');
         }
     }
 
