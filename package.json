@@ -9,7 +9,7 @@
     "typeorm-revert": "typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:revert",
     "typeorm-run": "typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:run",
     "typeorm-create": "typeorm-ts-node-commonjs migration:create",
-    "typeorm-mig": "node ./src/shared/infra/typeorm/create-migration.js",
+    "typeorm-mig": "ts-node-dev ./src/shared/infra/typeorm/create-migration.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "test": "jest"
   },

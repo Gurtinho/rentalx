@@ -1,12 +1,16 @@
 #!/usr/bin/env node
 
-const yargs  = require('yargs')
-const { execSync } =  require('child_process')
+import yargs from 'yargs'
+import { execSync } from 'child_process'
+
+interface IMigration {
+	_: (string | number)[]
+}
 
 // Parse the command-line arguments
 const {
 	_: [name],
-} = yargs.argv
+} = yargs.argv as IMigration
 
 // Construct the migration path
 const migrationPath = `src/shared/infra/typeorm/migrations/${name}`
