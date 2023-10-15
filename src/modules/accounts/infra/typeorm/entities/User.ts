@@ -16,16 +16,16 @@ class User {
     password: string
 
     @Column()
-    isAdmin: boolean
+    is_admin?: boolean
+
+    @Column()
+    avatar?: string
 
     @Column()
     driver_licence: string
 
     @CreateDateColumn()
     created_at: string
-
-    @CreateDateColumn()
-    updated_at: string
 
     constructor() {
         if (!this.id) {

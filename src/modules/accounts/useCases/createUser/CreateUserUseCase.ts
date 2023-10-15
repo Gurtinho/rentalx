@@ -1,31 +1,27 @@
 import { inject, injectable } from 'tsyringe'
-import { IUsersRepository } from '../../repositories/IUsersRepository'
-import { ICreateUsersDTO } from '@modules/accounts/dtos/ICreateUsersDTO'
+import { ICreateUsersDTO } from '../../dtos/ICreateUsersDTO'
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository'
 import { hash } from 'bcryptjs'
+import { AppError } from '@shared/errors/AppError'
 
 @injectable()
 class CreateUserUseCase {
-	private usersRepository: IUsersRepository
 	constructor(
 		@inject('UsersRepository')
-		usersRepository: IUsersRepository,
-	) {
-		this.usersRepository = usersRepository
-	}
+		private usersRepository: IUsersRepository,
+	) {}
+
 	async execute({
 		name,
 		email,
 		password,
 		driver_licence,
-	}: ICreateUsersDTO): Promise<void> {
-		// const userAlreadyExists = await this.usersRepository.findByEmail(email)
-
-		// if (userAlreadyExists) {
-			// throw new Error('User already exists')
-		// }
-
+  }: ICreateUsersDTO): Promise<void> {
+    const userAlreadyExists = await this.usersRepository.findByEmail(email)
+    if (userAlreadyExists) { 
+      throw new AppError('ja existe parça');
+    } 
 		const passwordHash = await hash(password, 8)
-
 		await this.usersRepository.create({
 			name,
 			email,

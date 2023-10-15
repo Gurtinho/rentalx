@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { CreateCategoryUseCase } from '@modules/cars/useCases/createCategory/CreateCategoryUseCase';
+import { AppError } from '@shared/errors/AppError';
 
 class CreateCategoryController {
 
@@ -11,7 +12,7 @@ class CreateCategoryController {
             await createCategoryUseCase.execute({ name, description });
             return response.status(201).send();
         } catch (err) {
-            throw new Error('Cannot create category');
+            throw new AppError('Cannot create category');
         }
     }
 
