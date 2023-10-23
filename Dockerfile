@@ -10,5 +10,6 @@ RUN npm install
 
 COPY . .
 EXPOSE 3333
+EXPOSE 9229
 
-CMD cls | clear & npm run dev
+CMD cls | clear & npm run dev --inspect-brk=0.0.0.0:9229

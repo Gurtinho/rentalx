@@ -5,13 +5,13 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p .",
-    "dev": "ts-node-dev --inspect -r tsconfig-paths/register --transpile-only --poll --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
-    "typeorm-revert": "typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:revert",
-    "typeorm-run": "typeorm-ts-node-commonjs -d ./src/database/data-source.ts migration:run",
-    "typeorm-create": "typeorm-ts-node-commonjs migration:create",
-    "typeorm-mig": "ts-node-dev ./src/shared/infra/typeorm/create-migration.ts",
+    "dev": "ts-node-dev --inspect=0.0.0.0:9229 -r tsconfig-paths/register --transpile-only --poll --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
+    "typeorm-revert": "typeorm-ts-node-commonjs -d ./src/shared/infra/typeorm/data-source.ts migration:revert",
+    "typeorm-run": "typeorm-ts-node-commonjs -d ./src/shared/infra/typeorm/data-source.ts migration:run",
+    "typeorm-create": "ts-node-dev ./src/shared/infra/typeorm/create-migration.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "test": "jest"
+    "test": "jest",
+    "seed:admin": "ts-node-dev ./src/shared/infra/typeorm/seed/admin.factory.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -26,6 +26,7 @@
     "swagger-ui-express": "^4.6.3",
     "tsyringe": "^4.7.0",
     "typeorm": "^0.3.16",
+    "typeorm-extension": "^3.1.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

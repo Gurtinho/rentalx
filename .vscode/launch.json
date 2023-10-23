@@ -10,6 +10,7 @@
             "restart": true, // Quando terminar ele irá reiniciar
             "localRoot": "${workspaceFolder}",
             "remoteRoot": "/app",
+            "address": "0.0.0.0"
         }
     ]
 }

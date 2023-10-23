@@ -5,6 +5,7 @@ import { ImportCategoryController } from '@modules/cars/useCases/importCategory/
 import { ListCategoryController } from '@modules/cars/useCases/listCategory/ListCategoryController';
 
 import { EnsureAuth } from '@shared/infra/http/middlewares/EnsureAuth';
+import { EnsureAdmin } from '../middlewares/EnsureAdmin';
 
 export const categoriesRoutes = Router();
 
@@ -18,6 +19,7 @@ const listCategoryController = new ListCategoryController();
 
 categoriesRoutes.post('/',
     EnsureAuth,
+    EnsureAdmin,
     createCategoryController.handle
 );
 categoriesRoutes.get('/',
@@ -25,5 +27,7 @@ categoriesRoutes.get('/',
 );
 categoriesRoutes.post('/import',
     upload.single('file'),
+    EnsureAuth,
+    EnsureAdmin,
     importCategoryController.handle
 );
