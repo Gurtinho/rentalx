@@ -1,6 +1,8 @@
 import 'reflect-metadata'
 import { container } from 'tsyringe'
 
+import '@shared/container/providers'
+
 import { CategoriesRepository } from '@modules/cars/infra/typeorm/repositories/CategoriesRepository'
 import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository'
 
@@ -15,6 +17,9 @@ import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository'
 
 import { CarsImageRepository } from '@modules/cars/infra/typeorm/repositories/CarsImageRepository'
 import { ICarsImageRepository } from '@modules/cars/repositories/ICarsImageRepository'
+
+import { RentalsRepository } from '@modules/rentals/infra/typeorm/repositories/RentalsRepository'
+import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository'
 
 container.registerSingleton<ICategoriesRepository>(
 	'CategoriesRepository',
@@ -39,4 +44,9 @@ container.registerSingleton<ICarsRepository>(
 container.registerSingleton<ICarsImageRepository>(
 	'CarsImageRepository',
 	CarsImageRepository
+)
+
+container.registerSingleton<IRentalsRepository>(
+	'RentalsRepository',
+	RentalsRepository
 )

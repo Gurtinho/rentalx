@@ -9,7 +9,7 @@
             "timeout": -1, // Irá manter o debug sempre ligado
             "restart": true, // Quando terminar ele irá reiniciar
             "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/app",
+            "remoteRoot": "/usr/app",
             "address": "0.0.0.0"
         }
     ]

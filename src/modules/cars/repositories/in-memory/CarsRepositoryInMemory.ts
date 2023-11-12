@@ -6,6 +6,11 @@ class CarsRepositoryInMemory implements ICarsRepository {
 
 	public cars: Car[] = []
 
+	async updateAvailable(id: string, available: boolean): Promise<void> {
+		const findIndex = this.cars.findIndex(car => car.id == id)
+		this.cars[findIndex].available = available
+	}
+
 	async create(data: ICreateTheCarDTO): Promise<Car> {
 		const car = new Car()
 
