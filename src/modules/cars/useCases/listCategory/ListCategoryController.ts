@@ -8,7 +8,7 @@ class ListCategoryController {
         try {
             const listCategoryUseCase = container.resolve(ListCategoryUseCase);
             const all = await listCategoryUseCase.execute();
-            return response.status(201).json(all);
+            return response.status(201).send(all);
         } catch (err) {
             return response.status(404).json(err);
         }

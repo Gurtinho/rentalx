@@ -5,10 +5,6 @@ import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 
 class RentalsRepositoryInMemory implements IRentalsRepository {
 
-  async findById(id: string): Promise<Rental> {
-    return this.rentals.find(rental => rental.id === id)
-  }
-
   private rentals: Rental[] = []
 
   async findOpenRentalByCar(car_id: string): Promise<Rental> {
@@ -33,6 +29,10 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
 
   async findByUserId(user_id: string): Promise<Rental[]> {
     return this.rentals.filter(rental => rental.user_id === user_id)
+  }
+
+  async findById(id: string): Promise<Rental> {
+    return this.rentals.find(rental => rental.id === id)
   }
 }
 

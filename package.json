@@ -10,7 +10,7 @@
     "typeorm-run": "typeorm-ts-node-commonjs -d ./src/shared/infra/typeorm/data-source.ts migration:run",
     "typeorm-create": "ts-node-dev ./src/shared/infra/typeorm/create-migration.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles",
     "seed:admin": "ts-node-dev ./src/shared/infra/typeorm/seed/admin.factory.ts"
   },
   "dependencies": {

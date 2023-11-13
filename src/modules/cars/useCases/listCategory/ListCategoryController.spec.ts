@@ -4,13 +4,15 @@ import { dataConnection } from "@shared/infra/typeorm/data-source";
 import { hash } from "bcryptjs";
 import { v4 as uuid } from 'uuid';
 
+let testConnection: any
+
 describe('List Category Controller', () => {
 
   beforeAll(async () => {
     const id = uuid()
     const passwordHash = await hash('1234', 8)
 
-    const testConnection = await dataConnection.initialize()
+    testConnection = await dataConnection.initialize()
     await testConnection.driver.connect()
     await testConnection.runMigrations()
 
@@ -22,7 +24,7 @@ describe('List Category Controller', () => {
   })
 
   afterAll(async () => {
-    await dataConnection.driver.connect() 
+    await testConnection.dropDatabase()
   })
 
   it('should be able to list all categories', async () => {
