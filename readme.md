@@ -1,19 +1,37 @@
-// app de aluguel de carros
+## Api de aluguel de carros
 
-// CRIAR UMA NOVA MIGRATION:
-yarn typeorm migration:create src/database/migrations/migrationName
+#### Criar migrations
 
-// PARA RODAR AS MIGRATIONS, VC PRECISA ESTAR DENTRO DO DOCKER
-utilize esse comando para entrar no bash do docker:
-docker-compose exec app bash
+*Dentro do package.json foi criado um arquivo .ts pra facilitar a criação de migrations*
 
-* Depois de rodar o comando pra entrar no bash do docker, ai sim pode rodar as migrations;
+```sh
+yarn typeorm migration:create migrationName
+```
 
-// RODAR AS MIGRATIONS:
+#### Entre dentro do container docker
+
+*utilize esse comando para entrar no bash do docker:*
+
+```sh
+docker exet -it rentalx-app /bin/sh
+```
+
+*Depois de rodar o comando pra entrar no bash do docker, ai sim pode rodar as migrations;*
+
+#### Rodar as migrations
+
+```sh
 yarn typeorm-run
+```
 
-// REVERTER MIGRATIONS:
+#### Reverter as migrations
+
+*Deve estar dentro do container do docker*
+
 yarn typeorm-revert
 
-// ABRIR O BANCO DIRETO NO TERMINAL DENTRO DO DOCKER:
-docker exec -it database psql -U postgres -d rentalx
+#### Abrir o banco de dados direto no terminal
+
+```sh
+docker exec -it rentalx-database psql -U postgres -d rentalx
+```
