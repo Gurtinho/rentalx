@@ -1,5 +1,3 @@
-import { UserTokens } from "@modules/accounts/infra/typeorm/entities/UserTokens"
-
 interface IDateProvider {
   dayNow(): Date
   addDays(days: number): Date

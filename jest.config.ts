@@ -7,6 +7,15 @@ const config: Config = {
   coverageProvider: "v8",
   preset: 'ts-jest',
   testMatch: ["**/*.spec.ts"],
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  coverageReporters: [
+    'text-summary',
+    'lcov'
+  ],
+  collectCoverageFrom: [
+    '<rootDir>/src/modules/**/useCases/**/*.ts'
+  ],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/src/'
   })
