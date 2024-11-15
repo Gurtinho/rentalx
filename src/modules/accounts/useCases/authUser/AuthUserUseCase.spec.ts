@@ -28,8 +28,8 @@ describe('Authenticate User', () => {
 
   it('Should be able to create an user', async () => {
     const user: ICreateUsersDTO = {
-      name: 'gustavo litter teste',
-      email: 'gustavolitter@gmail.com',
+      name: 'teste',
+      email: 'teste@gmail.com',
       password: '1234',
       driver_licence: 'aaaaaaaaaaa'
     }
@@ -54,8 +54,8 @@ describe('Authenticate User', () => {
 
   it('Should not be able to authenticate with password incorrect', async () => {
     const user: ICreateUsersDTO = {
-      name: 'gustavo litter teste',
-      email: 'gustavolitter@gmail.com',
+      name: 'gdflnvbrfki teste',
+      email: 'gnefklrgbwei@gmail.com',
       password: '1234',
       driver_licence: 'aaaaaaaaaaa'
     }
