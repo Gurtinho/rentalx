@@ -13,7 +13,7 @@ yarn typeorm migration:create migrationName
 *utilize esse comando para entrar no bash do docker:*
 
 ```sh
-docker exet -it rentalx-app /bin/sh
+docker exec -it rentalx-app /bin/sh
 ```
 
 *Depois de rodar o comando pra entrar no bash do docker, ai sim pode rodar as migrations;*
